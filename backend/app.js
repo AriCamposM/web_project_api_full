@@ -49,8 +49,9 @@ app.use(express.json())
 app.use(requestLogger);
 
 //Routes de tarjetas y usuarios
+
+app.use('/cards',cards);
 app.use('/',users);
-app.use('/',cards);
 
 //Conectamos el logger de errores
 app.use(errorLogger);

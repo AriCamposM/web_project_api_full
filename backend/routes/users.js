@@ -27,18 +27,18 @@ users.post('/signin', celebrate({
 }) ,loginUser);
 
 //Middleware Auth
-+
+users.use(auth)
 
 //GET Para obtener el json de los Usuarios
 users.get('/users', getUsers);
 
-//GET Para obtener el json de un Usuario especifico
-users.get('/users/:userId', getUser);
-
 //GET Para obtener la información del usuario mediante el _id dentro de req.body(Cuerpo de la solicitud, generado por el middleware auth)
 users.get('/users/me', getUserInfo)
 
-//PATCH Para actualizar un Usuario
+//GET Para obtener el json de un Usuario especifico
+users.get('/users/:userId', getUser);
+
+//PATCH Para actualizar un Usuarionp
 users.patch('/users/me', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).required(),
