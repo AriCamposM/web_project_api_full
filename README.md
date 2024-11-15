@@ -9,6 +9,14 @@ Puedes ver el proyecto en vivo aquí: [Enlace al blog de viajes](https://www.ari
 
 Blog of Travel es una plataforma para compartir experiencias de viaje a través de tarjetas visuales. Los usuarios pueden registrar cuentas, iniciar sesión, crear tarjetas con imágenes y descripciones de sus viajes, y también interactuar con otras tarjetas mediante "likes". Este README describe los endpoints disponibles para la gestión de usuarios y tarjetas en la plataforma.
 
+
+## 🚀 Tecnologías Utilizadas
+
+- **Frontend**: React.js, CSS
+- **Backend**: Node.js, Express.js
+- **Base de Datos**: MongoDB (para almacenar usuarios, noticias personalizadas y guardadas)
+- **Autenticación**: JSON Web Tokens (JWT) para autenticación segura de usuarios en la API personalizada
+
 ## Enlace a la API
 
 La API fue desarrollada por [Aricampos](https://api.aricampos.ddnsfree.top). Puedes acceder a la API utilizando este enlace para hacer pruebas o integraciones.
