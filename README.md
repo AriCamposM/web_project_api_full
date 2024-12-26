@@ -161,3 +161,173 @@ La API fue desarrollada por [Aricampos](https://api.aricampos.ddnsfree.top). Pue
 - **401 Unauthorized:** Cuando el usuario no está autenticado (por ejemplo, si no se proporciona un token JWT válido en los endpoints que requieren autenticación).
 - **404 Not Found:** Cuando el recurso solicitado no existe (por ejemplo, si el :userId o :cardId no es válido).
 - **400 Bad Request:** Cuando el cuerpo de la solicitud no cumple con los requisitos (por ejemplo, falta un campo obligatorio).
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+# Blog of Travel API
+
+## Link to the Project
+
+You can view the project live here: [Link to the travel blog](https://www.aricampos.ddnsfree.top)
+
+
+## Description
+
+Blog of Travel is a platform for sharing travel experiences through visual cards. Users can register accounts, log in, create cards with images and descriptions of their trips, and also interact with other cards by giving "likes". This README describes the available endpoints for managing users and cards on the platform.
+
+
+## 🚀 Technologies Used
+
+- **Frontend**: React.js, CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (to store users, personalized and saved news)
+- **Authentication**: JSON Web Tokens (JWT) for secure user authentication in the custom API
+
+## API Link
+
+The API was developed by [Aricampos](https://api.aricampos.ddnsfree.top). You can access the API using this link for testing or integrations.
+
+## Endpoints
+
+### **Users**
+
+1. **Register a new user**
+   - **Method**: `POST /signup`
+   - **Description**: Registers a new user by providing an email and password, along with optional data such as name, description, and avatar.
+   - **Body**:
+     ```json
+     {
+       "email": "user@example.com",
+       "password": "SecurePassword",
+       "name": "User's Name",
+       "about": "Brief description",
+       "avatar": "avatar-url"
+     }
+     ```
+
+2. **Log in (login)**
+   - **Method**: `POST /signin`
+   - **Description**: Allows a user to log in by providing their email and password. An authentication token (JWT) will be returned.
+   - **Body**:
+     ```json
+     {
+       "email": "user@example.com",
+       "password": "SecurePassword"
+     }
+     ```
+
+3. **Get all users**
+   - **Method**: `GET /users`
+   - **Description**: Retrieves the list of all registered users.
+   - **Authentication**: Requires authentication (middleware `auth`).
+
+4. **Get information of the authenticated user**
+   - **Method**: `GET /users/me`
+   - **Description**: Retrieves the information of the authenticated user via the JWT token.
+   - **Authentication**: Requires authentication.
+
+5. **Get information of a specific user**
+   - **Method**: `GET /users/:userId`
+   - **Description**: Retrieves the information of a specific user by their ID.
+   - **Parameters**:
+     - `:userId`: ID of the user.
+
+6. **Update the information of the authenticated user**
+   - **Method**: `PATCH /users/me`
+   - **Description**: Updates the name and description of the authenticated user.
+   - **Body**:
+     ```json
+     {
+       "name": "New Name",
+       "about": "New description"
+     }
+     ```
+
+7. **Update the avatar of the authenticated user**
+   - **Method**: `PATCH /users/me/avatar`
+   - **Description**: Allows the authenticated user to update their avatar.
+   - **Body**:
+     ```json
+     {
+       "avatar": "new-avatar-url"
+     }
+     ```
+
+---
+
+### **Cards**
+
+1. **Get all cards**
+   - **Method**: `GET /cards`
+   - **Description**: Retrieves all the cards on the platform.
+   - **Authentication**: Requires authentication (middleware `auth`).
+
+2. **Create a new card**
+   - **Method**: `POST /cards`
+   - **Description**: Creates a new card by providing a name and a link (image or URL).
+   - **Body**:
+     ```json
+     {
+       "name": "Card name",
+       "link": "image-or-link-url"
+     }
+     ```
+
+3. **Delete a specific card**
+   - **Method**: `DELETE /cards/:cardId`
+   - **Description**: Deletes a specific card by its ID.
+   - **Parameters**:
+     - `:cardId`: ID of the card to delete.
+
+4. **Like a card**
+   - **Method**: `PUT /cards/likes/:cardId`
+   - **Description**: Allows a user to "like" a specific card.
+   - **Parameters**:
+     - `:cardId`: ID of the card to like.
+
+5. **Remove like from a card**
+   - **Method**: `DELETE /cards/likes/:cardId`
+   - **Description**: Allows a user to remove their "like" from a specific card.
+   - **Parameters**:
+     - `:cardId`: ID of the card to remove the like from.
+
+---
+
+## Installation
+
+### Prerequisites
+- Node.js and npm installed on your machine.
+- MongoDB (either local or in the cloud via MongoDB Atlas).
+
+### Steps to run the project locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-user/blog-of-travel.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd blog-of-travel
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Configure environment variables: Create a .env file and add the following variables:
+   - MONGO_URI: Your MongoDB database URL.
+   - JWT_SECRET: Secret key for JWT.
+   - PORT: (Optional) Port where the server will run.
+5. Run the server:
+   ```bash
+   npm start
+   ```
+6. Visit http://localhost:3000 in your browser to test the API.
+
+## Common Errors
+- **401 Unauthorized:** When the user is not authenticated (for example, if a valid JWT token is not provided for endpoints that require authentication).
+- **404 Not Found:** When the requested resource does not exist (for example, if the :userId or :cardId is invalid).
+- **400 Bad Request:** When the body of the request does not meet the requirements (for example, if a required field is missing).
